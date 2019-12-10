@@ -4,8 +4,9 @@
     "jsx": "react",
     "jsxFactory": "React.createElement",
     "esModuleInterop": true,
-    "sourceMap": true,
     "allowJs": true,
+    "strict": true,
+    "sourceMap": true,
     "lib": [
       "es6",
       "dom"
