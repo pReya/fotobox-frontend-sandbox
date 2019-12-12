@@ -2,7 +2,6 @@
   "compilerOptions": {
     "module": "commonjs",
     "jsx": "react",
-    "jsxFactory": "React.createElement",
     "esModuleInterop": true,
     "allowJs": true,
     "strict": true,
