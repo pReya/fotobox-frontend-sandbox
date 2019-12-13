@@ -4,7 +4,7 @@ import styles from "./video-preview.styl";
 const VideoPreview = (): JSX.Element => {
   return (
     <div className={styles.container}>
-      <img src="localhost:8080" />
+      <img src="http://climatecam.gi.alaska.edu/mjpg/video.mjpg" />
     </div>
   );
 };
