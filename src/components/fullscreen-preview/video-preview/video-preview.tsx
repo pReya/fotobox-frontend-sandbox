@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./video-preview.styl";
+import clsx from "clsx";
 
-const VideoPreview = (): JSX.Element => {
+const VideoPreview = ({ hide }: { hide: boolean }): JSX.Element => {
   const [source, setSource] = useState(
     "http://climatecam.gi.alaska.edu/mjpg/video.mjpg"
   );
@@ -18,7 +19,7 @@ const VideoPreview = (): JSX.Element => {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div className={clsx(hide && styles.hide)}>
       <img src={source} />
     </div>
   );

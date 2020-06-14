@@ -1,4 +1,4 @@
 declare const styles: {
-  readonly "container": string;
+  readonly "fullscreen": string;
 };
 export = styles;
