@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "parcel index.html --open --host 192.168.179.23 --port 3000",
+    "start": "parcel index.html --open --port 3000",
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "clsx": "^1.1.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
@@ -19,10 +19,14 @@
     "@babel/preset-typescript": "^7.10.1",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "@types/styled-components": "^5.1.0",
+    "babel-plugin-styled-components": "^1.10.5",
     "parcel-bundler": "^1.6.1",
     "parcel-plugin-css-modules-type-generator": "^1.2.0",
-    "postcss-modules": "^2.0.0",
-    "stylus": "^0.54.7",
+    "stylelint": "^13.6.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
     "typescript": "^3.9.5"
   },
   "keywords": []

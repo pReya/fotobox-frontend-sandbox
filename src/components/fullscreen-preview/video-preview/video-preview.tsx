@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
-import styles from "./video-preview.styl";
-import clsx from "clsx";
+import styled from "styled-components";
 
-const VideoPreview = ({ hide }: { hide: boolean }): JSX.Element => {
+interface VideoPreviewProps {
+  readonly hide: boolean;
+}
+
+const StyledContainer = styled.div<VideoPreviewProps>`
+  display: ${(props) => (props.hide ? "none" : "initial")};
+`;
+
+const VideoPreview: React.FunctionComponent<VideoPreviewProps> = ({
+  hide,
+}): JSX.Element => {
   const [source, setSource] = useState(
     "http://climatecam.gi.alaska.edu/mjpg/video.mjpg"
   );
@@ -19,9 +28,9 @@ const VideoPreview = ({ hide }: { hide: boolean }): JSX.Element => {
   }, []);
 
   return (
-    <div className={clsx(hide && styles.hide)}>
+    <StyledContainer hide={hide}>
       <img src={source} />
-    </div>
+    </StyledContainer>
   );
 };
 

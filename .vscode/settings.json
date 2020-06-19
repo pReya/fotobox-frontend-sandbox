@@ -4,5 +4,8 @@
   "stylusSupremacy.insertSemicolons": false,
   "stylusSupremacy.insertBraces": false,
   "stylusSupremacy.sortProperties": "grouped",
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false
 }
