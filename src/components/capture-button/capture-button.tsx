@@ -29,11 +29,11 @@ const CaptureButton: React.FunctionComponent<CaptureButtonProps> = ({
   onRelease,
 }): JSX.Element => {
   const [isBusy, setIsBusy] = useState(false);
-  const { BACKEND_URL: backendUrl, BACKEND_PORT: backendPort } = process.env;
+  const backendUrl = process.env.BACKEND_URL;
+  const backendPort = process.env.BACKEND_PORT;
 
   const takePicture = () => {
     setIsBusy(true);
-    // Delay result to see the Loader
 
     fetch(`http://${backendUrl}:${backendPort}/picture`)
       .then((response) => response.json())

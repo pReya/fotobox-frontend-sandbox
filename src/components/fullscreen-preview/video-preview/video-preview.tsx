@@ -13,7 +13,8 @@ const VideoPreview: React.FunctionComponent<VideoPreviewProps> = ({
   hide,
 }): JSX.Element => {
   const [source, setSource] = useState("");
-  const { BACKEND_URL: backendUrl, BACKEND_PORT: backendPort } = process.env;
+  const backendUrl = process.env.BACKEND_URL;
+  const backendPort = process.env.BACKEND_PORT;
 
   useEffect(() => {
     const streamUrl = `http://${backendUrl}:${backendPort}/`;
