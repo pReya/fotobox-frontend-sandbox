@@ -32,20 +32,22 @@ const CaptureButton: React.FunctionComponent<CaptureButtonProps> = ({
 
   const takePicture = () => {
     setIsBusy(true);
-    setTimeout(() => {
-      fetch("http://192.168.179.23:8080/picture")
-        .then((response) => {
-          console.log("Response: ", response);
-        })
-        .catch((error) => {
-          console.error("Error: ", error);
-        })
-        .finally(() => {
-          setIsBusy(false);
-          setTimeout(() => onRelease(""), 5000);
-          onRelease("https://picsum.photos/seed/picsum/1920/1080");
-        });
-    }, 2000);
+    // Delay result to see the Loader
+
+    fetch("http://localhost:8080/picture")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Response: ", data);
+        onRelease(data.path);
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+        onRelease("https://picsum.photos/1920/1080");
+      })
+      .finally(() => {
+        setIsBusy(false);
+        setTimeout(() => onRelease(""), 5000);
+      });
   };
 
   return (

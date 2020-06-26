@@ -17,7 +17,7 @@ const VideoPreview: React.FunctionComponent<VideoPreviewProps> = ({
   );
 
   useEffect(() => {
-    const backendIp = "http://192.168.179.23:8080/";
+    const backendIp = "http://localhost:8080/";
 
     fetch(backendIp).then((response) => {
       if (response.status === 200) {

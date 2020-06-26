@@ -47,9 +47,8 @@ const StyledContainer = styled.div`
   animation: ${rotate} 1.1s infinite ease;
 `;
 
-const Loader: React.FunctionComponent = (): JSX.Element => {
-  console.log("Render loader");
-  return <StyledContainer>Loading...</StyledContainer>;
-};
+const Loader: React.FunctionComponent = (): JSX.Element => (
+  <StyledContainer>Loading...</StyledContainer>
+);
 
 export default Loader;
