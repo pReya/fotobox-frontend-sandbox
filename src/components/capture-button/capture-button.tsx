@@ -28,9 +28,15 @@ const StyledContainer = styled.span<{ clickable: boolean }>`
 const CaptureButton: React.FunctionComponent<CaptureButtonProps> = ({
   onRelease,
 }): JSX.Element => {
-  const [isBusy, setIsBusy] = useState(false);
   const backendUrl = process.env.BACKEND_URL;
   const backendPort = process.env.BACKEND_PORT;
+  const previewDurationMs = Number(process.env.PREVIEW_DURATION_MS);
+
+  const [isBusy, setIsBusy] = useState(false);
+  const [isShowingPreview, setIsShowingPreview] = useState(false);
+  const [countdownSeconds, setCountdownSeconds] = useState(
+    previewDurationMs / 1000
+  );
 
   const takePicture = () => {
     setIsBusy(true);
@@ -47,7 +53,11 @@ const CaptureButton: React.FunctionComponent<CaptureButtonProps> = ({
       })
       .finally(() => {
         setIsBusy(false);
-        setTimeout(() => onRelease(""), 5000);
+        setIsShowingPreview(true);
+        setTimeout(() => {
+          setIsShowingPreview(false);
+          onRelease("");
+        }, previewDurationMs);
       });
   };
 
@@ -57,6 +67,7 @@ const CaptureButton: React.FunctionComponent<CaptureButtonProps> = ({
       {...(!isBusy && { onClick: takePicture })}
     >
       {isBusy && <Loader />}
+      {isShowingPreview && <span>5 Sekunden</span>}
     </StyledContainer>
   );
 };

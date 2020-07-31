@@ -17,18 +17,22 @@ const VideoPreview: React.FunctionComponent<VideoPreviewProps> = ({
   const backendPort = process.env.BACKEND_PORT;
 
   useEffect(() => {
-    const streamUrl = `http://${backendUrl}:${backendPort}/`;
-    const streamIsAvailable = `${streamUrl}status`;
+    const streamUrl = `http://${backendUrl}:${backendPort}`;
+    const streamIsAvailable = `${streamUrl}/status`;
 
-    fetch(streamIsAvailable).then((response) => {
-      if (response.status === 200) {
-        console.log("Found backend");
-        setSource(streamUrl);
-      } else {
+    fetch(streamIsAvailable)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Found backend");
+          setSource(streamUrl);
+        } else {
+          throw "No success";
+        }
+      })
+      .catch(() => {
         console.error("Found no backend – Fallback stream");
         setSource("http://climatecam.gi.alaska.edu/mjpg/video.mjpg");
-      }
-    });
+      });
   }, []);
 
   return (

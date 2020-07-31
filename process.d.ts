@@ -4,5 +4,6 @@ declare const process: {
   env: {
     BACKEND_URL: string;
     BACKEND_PORT: string;
+    PREVIEW_DURATION_MS: string;
   };
 };
