@@ -48,7 +48,7 @@ const StyledContainer = styled.div`
 `;
 
 const Loader: React.FunctionComponent = (): JSX.Element => (
-  <StyledContainer>Loading...</StyledContainer>
+  <StyledContainer></StyledContainer>
 );
 
 export default Loader;

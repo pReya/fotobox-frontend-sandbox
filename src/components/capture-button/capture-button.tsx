@@ -6,22 +6,21 @@ interface CaptureButtonProps {
   readonly onRelease: (url: string) => void;
 }
 
-const StyledContainer = styled.span<{ clickable: boolean }>`
+const StyledSvgContainer = styled.div<{ clickable: boolean }>`
+  width: 100%;
+  text-align: center;
   position: absolute;
   bottom: 8%;
-  left: calc(50% - 50px);
-  padding: 10px;
-  width: 90px;
-  height: 90px;
-  border: 6px solid white;
-  border-radius: 50%;
-  background-color: white;
-  background-clip: content-box;
   box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.3);
-  cursor: ${({ clickable }) => (clickable ? "pointer" : "auto")};
 
-  &:hover {
-    background-color: ${({ clickable }) => (clickable ? "lightgrey" : "white")};
+  #centerCircle {
+    fill: white;
+    cursor: ${({ clickable }) => (clickable ? "pointer" : "auto")};
+  }
+
+  #centerCircle:hover {
+    fill: ${({ clickable }) => (clickable ? "red" : "white")};
+    cursor: ${({ clickable }) => (clickable ? "pointer" : "auto")};
   }
 `;
 
@@ -46,18 +45,40 @@ const CaptureButton: React.FunctionComponent<CaptureButtonProps> = ({
         onRelease("https://picsum.photos/1920/1080");
       })
       .finally(() => {
-        setIsBusy(false);
-        setTimeout(() => onRelease(""), 5000);
+        setTimeout(() => {
+          onRelease("");
+          setIsBusy(false);
+        }, 5000);
       });
   };
 
   return (
-    <StyledContainer
-      clickable={!isBusy}
-      {...(!isBusy && { onClick: takePicture })}
-    >
+    <>
+      <StyledSvgContainer
+        clickable={!isBusy}
+        {...(!isBusy && { onClick: takePicture })}
+      >
+        <svg height="120" width="120">
+          <circle
+            stroke-width="1"
+            fill="transparent"
+            stroke="white"
+            strokeWidth="6"
+            r="56"
+            cx="60"
+            cy="60"
+          ></circle>
+          <circle
+            id="centerCircle"
+            fill="white"
+            r="48"
+            cx="60"
+            cy="60"
+          ></circle>
+        </svg>
+      </StyledSvgContainer>
       {isBusy && <Loader />}
-    </StyledContainer>
+    </>
   );
 };
 
