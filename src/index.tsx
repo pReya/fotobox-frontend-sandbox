@@ -7,9 +7,13 @@ import FullscreenPreview from "./components/fullscreen-preview/fullscreen-previe
 
 const GlobalStyle = createGlobalStyle`
   html {
-    margin: 0;
     background-color: black;
     font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
   }
 `;
 

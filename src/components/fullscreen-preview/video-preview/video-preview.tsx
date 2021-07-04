@@ -15,20 +15,29 @@ const VideoPreview: React.FunctionComponent<VideoPreviewProps> = ({
   const [source, setSource] = useState("");
   const backendUrl = process.env.BACKEND_URL;
   const backendPort = process.env.BACKEND_PORT;
+  const fallbackStream = process.env.FALLBACK_STREAM;
 
   useEffect(() => {
     const streamUrl = `http://${backendUrl}:${backendPort}/`;
     const streamIsAvailable = `${streamUrl}status`;
 
-    fetch(streamIsAvailable).then((response) => {
-      if (response.status === 200) {
-        console.log("Found backend");
-        setSource(streamUrl);
-      } else {
-        console.error("Found no backend – Fallback stream");
-        setSource("http://climatecam.gi.alaska.edu/mjpg/video.mjpg");
+    fetch(streamIsAvailable).then(
+      (response) => {
+        if (response.status === 200) {
+          console.log("Found backend");
+          setSource(streamUrl);
+        } else {
+          console.error("Backend not available – Using fallback stream");
+          setSource(fallbackStream);
+        }
+      },
+      () => {
+        console.error(
+          "Network error when trying to reach backend – Using fallback stream"
+        );
+        setSource(fallbackStream);
       }
-    });
+    );
   }, []);
 
   return (

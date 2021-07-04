@@ -8,8 +8,9 @@ const StyledContainer = styled.div`
   overflow: hidden;
 
   & img {
-    max-height: 100vh;
-    width: 100vw;
+    position: fixed;
+    max-height: 100%;
+    width: 100%;
     object-fit: cover;
   }
 `;
