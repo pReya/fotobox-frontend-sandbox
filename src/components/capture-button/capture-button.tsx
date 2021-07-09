@@ -15,6 +15,8 @@ const ControlBarContainer = styled.div`
 `;
 
 const StyledSvgContainer = styled.div<{ clickable: boolean }>`
+  position: relative;
+
   svg {
     filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.6));
   }
@@ -96,6 +98,7 @@ const CaptureButton: React.FunctionComponent<CaptureButtonProps> = ({
         clickable={!isBusy}
         {...(!isBusy && { onClick: takePicture })}
       >
+        {isBusy && <Loader />}
         <svg height="120" width="120">
           <circle
             id="outerCircle"
@@ -117,7 +120,7 @@ const CaptureButton: React.FunctionComponent<CaptureButtonProps> = ({
           <circle id="innerCircle" r="48" cx="60" cy="60"></circle>
         </svg>
       </StyledSvgContainer>
-      {/* {isBusy && <Loader />} */}
+
       <TimerContainer>
         <TimerValue
           active={timerInterval === 3000}

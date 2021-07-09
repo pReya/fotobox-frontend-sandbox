@@ -36,7 +36,10 @@ const rotate = keyframes`
 `;
 
 const StyledContainer = styled.div`
-  position: relative;
+  position: absolute;
+  left: 55px;
+  top: 15px;
+  z-index: 999;
   margin: 40px auto;
   width: 1em;
   height: 1em;
